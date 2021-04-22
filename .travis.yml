@@ -18,3 +18,7 @@ notifications:
       - SereginSun@yandex.ru
     on_success: never # default: change
     on_failure: always # default: always
+
+env:
+  global:
+    - CODECOV_TOKEN="9360f4c0-4f4d-414b-aa8d-7d2d5d7ea43d"
