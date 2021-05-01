@@ -19,7 +19,7 @@ public class Wget implements Runnable {
     @Override
     public void run() {
         try (BufferedInputStream in = new BufferedInputStream(new URL(url).openStream());
-             FileOutputStream out = new FileOutputStream(fileName)){
+             FileOutputStream out = new FileOutputStream(fileName)) {
             byte[] dataBuffer = new byte[speed];
             int bytesRead;
             long start = System.currentTimeMillis();
