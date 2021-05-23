@@ -25,7 +25,7 @@ public class ParseFile {
         return output.toString();
     }
 
-    public String getContentWithoutUnicode(Predicate<Character> filter) {
+    public String getContentWithoutUnicode() {
         return getContent(symbol -> symbol < 0x80);
     }
 }
