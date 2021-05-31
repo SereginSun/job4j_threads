@@ -17,7 +17,7 @@ public class UserStorage {
     }
 
     public synchronized boolean update(User user) {
-        return users.replace(user.getId(), user) != null ;
+        return users.replace(user.getId(), user) != null;
     }
 
     public synchronized boolean delete(User user) {
