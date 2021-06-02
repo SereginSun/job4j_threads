@@ -1,8 +1,13 @@
 package ru.job4j.concurrent.wait;
 
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+
+@ThreadSafe
 public class CountBarrier {
     private final Object monitor = this;
     private final int total;
+    @GuardedBy("monitor")
     private int count = 0;
 
     public CountBarrier(final int total) {
