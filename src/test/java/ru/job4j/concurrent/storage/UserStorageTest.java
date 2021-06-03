@@ -16,7 +16,7 @@ public class UserStorageTest {
         store.add(second);
         Thread task1 = new Thread(() -> store.transfer(1, 2, 200));
         Thread task2 = new Thread(() -> {
-            store.transfer(2, 1, 400);
+            store.transfer(2, 1, 300);
             store.update(first);
             store.update(second);
         });
@@ -24,6 +24,6 @@ public class UserStorageTest {
         task2.start();
         task1.join();
         task2.join();
-        assertThat(store.getUserById(1).getAmount(), is(400));
+        assertThat(store.getUserById(1).getAmount(), is(300));
     }
 }

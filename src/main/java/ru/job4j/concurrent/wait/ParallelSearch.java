@@ -7,7 +7,12 @@ public class ParallelSearch {
         final Thread consumer = new Thread(
                 () -> {
                     while (!Thread.currentThread().isInterrupted()) {
-                        System.out.println(queue.pool());
+                        try {
+                            System.out.println(queue.pool());
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                            Thread.currentThread().interrupt();
+                        }
                     }
                 }
         );
@@ -16,11 +21,12 @@ public class ParallelSearch {
         final Thread producer = new Thread(
                 () -> {
                     for (int i = 0; i != 3; i++) {
-                        queue.offer(i);
                         try {
+                            queue.offer(i);
                             Thread.sleep(500);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
+                            Thread.currentThread().interrupt();
                         }
                     }
                     consumer.interrupt();

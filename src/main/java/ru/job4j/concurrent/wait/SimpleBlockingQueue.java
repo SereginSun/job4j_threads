@@ -18,31 +18,30 @@ public class SimpleBlockingQueue<T> {
     @GuardedBy("this")
     private final Queue<T> queue = new LinkedList<>();
 
-    public void offer(T value) {
+    public void offer(T value) throws InterruptedException {
         synchronized (this) {
             this.notify();
             if (queue.size() == limit) {
-                try {
                     this.wait();
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
             }
             queue.offer(value);
         }
     }
 
-    public T pool() {
+    public T pool() throws InterruptedException {
         synchronized (this) {
             this.notify();
             if (queue.size() == 0) {
-                try {
                     this.wait();
-                } catch (InterruptedException e) {
                     Thread.currentThread().interrupt();
-                }
             }
             return queue.poll();
+        }
+    }
+
+    public boolean isEmpty() {
+        synchronized (this) {
+            return queue.isEmpty();
         }
     }
 }
