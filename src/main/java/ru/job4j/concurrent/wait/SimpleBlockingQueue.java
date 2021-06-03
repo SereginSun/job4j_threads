@@ -8,6 +8,8 @@ import java.util.Queue;
 
 @ThreadSafe
 public class SimpleBlockingQueue<T> {
+    @GuardedBy("this")
+    private final Queue<T> queue = new LinkedList<>();
 
     private final int limit;
 
@@ -15,27 +17,25 @@ public class SimpleBlockingQueue<T> {
         this.limit = limit;
     }
 
-    @GuardedBy("this")
-    private final Queue<T> queue = new LinkedList<>();
-
     public void offer(T value) throws InterruptedException {
         synchronized (this) {
-            this.notify();
             if (queue.size() == limit) {
-                    this.wait();
+                this.wait();
             }
             queue.offer(value);
+            this.notify();
         }
     }
 
     public T pool() throws InterruptedException {
         synchronized (this) {
-            this.notify();
             if (queue.size() == 0) {
-                    this.wait();
-                    Thread.currentThread().interrupt();
+                this.wait();
+//                Thread.currentThread().interrupt();
             }
-            return queue.poll();
+            T result = queue.poll();
+            this.notify();
+            return result;
         }
     }
 
