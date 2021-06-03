@@ -15,7 +15,7 @@ public class ParallelSearch {
 
         final Thread producer = new Thread(
                 () -> {
-                    for (int i = 0; i != 3 ; i++) {
+                    for (int i = 0; i != 3; i++) {
                         queue.offer(i);
                         try {
                             Thread.sleep(500);
