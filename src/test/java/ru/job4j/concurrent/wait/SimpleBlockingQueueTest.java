@@ -29,8 +29,8 @@ public class SimpleBlockingQueueTest {
         Thread consumer = new Thread(
                 () -> {
                     try {
-                        queue.pool();
-                        queue.pool();
+                        queue.poll();
+                        queue.poll();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                         Thread.currentThread().interrupt();
@@ -41,7 +41,7 @@ public class SimpleBlockingQueueTest {
         consumer.start();
         producer.join();
         consumer.join();
-        assertThat(queue.pool(), is("third"));
+        assertThat(queue.poll(), is("third"));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class SimpleBlockingQueueTest {
                 () -> {
                     while (!queue.isEmpty() || !Thread.currentThread().isInterrupted()) {
                         try {
-                            buffer.add(queue.pool());
+                            buffer.add(queue.poll());
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                             Thread.currentThread().interrupt();

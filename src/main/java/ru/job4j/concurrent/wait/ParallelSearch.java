@@ -8,7 +8,7 @@ public class ParallelSearch {
                 () -> {
                     while (!Thread.currentThread().isInterrupted()) {
                         try {
-                            System.out.println(queue.pool());
+                            System.out.println(queue.poll());
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                             Thread.currentThread().interrupt();

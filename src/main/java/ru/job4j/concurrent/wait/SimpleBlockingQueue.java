@@ -27,11 +27,10 @@ public class SimpleBlockingQueue<T> {
         }
     }
 
-    public T pool() throws InterruptedException {
+    public T poll() throws InterruptedException {
         synchronized (this) {
             if (queue.size() == 0) {
                 this.wait();
-//                Thread.currentThread().interrupt();
             }
             T result = queue.poll();
             this.notify();
