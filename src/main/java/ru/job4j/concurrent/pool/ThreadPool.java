@@ -10,7 +10,7 @@ public class ThreadPool {
     private final List<Thread> threads = new LinkedList<>();
     private final SimpleBlockingQueue<Runnable> tasks = new SimpleBlockingQueue<>(size);
 
-    public void init() {
+    public ThreadPool() {
         for (int i = 0; i < size; i++) {
             Thread thread = new Thread(() -> {
                 while (!Thread.currentThread().isInterrupted()) {

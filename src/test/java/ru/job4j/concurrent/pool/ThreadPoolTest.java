@@ -13,7 +13,6 @@ public class ThreadPoolTest {
     public void work() throws InterruptedException {
         CopyOnWriteArrayList<Integer> list = new CopyOnWriteArrayList<>();
         ThreadPool threadPool = new ThreadPool();
-        threadPool.init();
         for (int i = 0; i < 5; i++) {
             int num = i;
             Thread thread = new Thread(() -> list.add(num));
