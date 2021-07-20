@@ -39,12 +39,9 @@ public class RowColSum {
 
     public static Sums[] sum(int[][] matrix) {
         Sums[] result = new Sums[matrix.length];
-        int sumRow;
-        int sumCol;
-
         for (int i = 0; i < matrix.length; i++) {
-            sumRow = 0;
-            sumCol = 0;
+            int sumRow = 0;
+            int sumCol = 0;
             for (int j = 0; j < matrix[i].length; j++) {
                 sumRow += matrix[i][j];
                 sumCol += matrix[j][i];
