@@ -2,3 +2,4 @@
 [![codecov](https://codecov.io/gh/SereginSun/job4j_threads/branch/main/graph/badge.svg)](https://codecov.io/gh/SereginSun/job4j_threads)
 
 # job4j_threads
+В курсе производилась работа с веткамы git.
