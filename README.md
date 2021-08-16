@@ -3,6 +3,6 @@
 
 # job4j_threads
 
-Создание ветки в IDEA.
-
-Создание изменения под тем же коммитом.
+1. The First commit.
+2. The Second commit.
+3. The Third commit.
