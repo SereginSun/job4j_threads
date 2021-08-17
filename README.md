@@ -4,4 +4,4 @@
 # job4j_threads
 # change README.md
 
-Объединение зафиксированных изменений.
+task #309409. git stash.
