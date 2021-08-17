@@ -2,3 +2,6 @@
 [![codecov](https://codecov.io/gh/SereginSun/job4j_threads/branch/main/graph/badge.svg)](https://codecov.io/gh/SereginSun/job4j_threads)
 
 # job4j_threads
+# change README.md
+
+Объединение зафиксированных изменений.
